@@ -1,0 +1,56 @@
+{
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ]
+} function handleFileUpload(event) {
+  "const": "file",
+  "=": "event.target.files",
+  [ 0 ]
+  ";": ,
+  "const": ,
+  "formData": "=",
+  "new": "FormData();",
+  "formData.append('image'": ,
+  "file);": "const",
+  "xhr": "=",
+  "new": "XMLHttpRequest();",
+  "xhr.open('POST'": ,
+  "'/your-upload-endpoint');": // https://image-analyzer-web-app.cognitiveservices.azure.com/
+
+  "xhr.upload.addEventListener('progress'",
+  "function": "(event)",
+  {
+    "if": "(event.lengthComputable)",
+    {
+      "const": "progress",
+      "=": "Math.round((event.loaded",
+      "/": "event.total)",
+      "*": "100);",
+      "document.getElementById('uploadProgress').value": "=",
+      "progress;": 
+    }
+  }
+  ");": ,
+
+  "xhr.onload": ,
+  "=": "function",
+  "()": {
+    "if": "(xhr.status",
+    "===": "200)",
+    {
+      "console.log('Upload successful!');": 
+    },
+    "else": {
+      "console.error('Upload failed:'": ,
+      "xhr.statusText);": 
+    }
+  }
+  ";": ,
+
+  "xhr.send(formData);": 
+} document.getElementById('imageUpload').addEventListener('change', handleFileUpload);
